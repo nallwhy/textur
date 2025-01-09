@@ -5,18 +5,31 @@ defmodule TexturWeb.TextController do
   def new(conn, _params) do
     form = form_for_create()
 
-    render(conn, :new, form: form)
+    conn
+    |> render(:new, form: form)
+  end
+
+  def show(conn, %{"text_id" => text_id}) do
+    case D.get_text_by_id(text_id) do
+      {:ok, text} ->
+        conn
+        |> render(:show, text: text)
+
+      {:error, _} ->
+        conn
+        |> put_flash(:error, "No text")
+        |> redirect(to: ~p"/")
+    end
   end
 
   def create(conn, %{"form" => params}) do
     form = form_for_create()
 
     case form |> AshPhoenix.Form.submit(params: params) do
-      {:ok, _text} ->
+      {:ok, text} ->
         conn
         |> put_flash(:info, "Text shared successfully!")
-        # TODO: change url
-        |> redirect(to: ~p"/")
+        |> redirect(to: ~p"/#{text}")
 
       {:error, form} ->
         conn

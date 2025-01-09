@@ -18,6 +18,7 @@ defmodule TexturWeb.Router do
     pipe_through :browser
 
     get "/", TextController, :new
+    get "/:text_id", TextController, :show
     post "/create", TextController, :create
   end
 

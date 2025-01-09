@@ -15,7 +15,16 @@ defmodule Textur.Domain.Text do
   end
 
   actions do
+    read :list do
+      primary? true
+    end
+
+    read :get_by_id do
+      get_by :id
+    end
+
     create :create do
+      primary? true
       accept [:title, :body, :password, :private]
     end
   end
