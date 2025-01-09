@@ -1,5 +1,4 @@
 defmodule Textur.Repo do
-  use Ecto.Repo,
-    otp_app: :textur,
-    adapter: Ecto.Adapters.SQLite3
+  use AshSqlite.Repo,
+    otp_app: :textur
 end

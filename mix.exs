@@ -58,7 +58,8 @@ defmodule Textur.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:ash, "~> 3.0"}
+      {:ash, "~> 3.0"},
+      {:ash_sqlite, "~> 0.2.1"}
     ]
   end
 

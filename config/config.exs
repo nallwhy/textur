@@ -87,7 +87,8 @@ config :spark,
         :identities,
         :code_interface,
         :resource,
-        :multitenancy
+        :multitenancy,
+        :sqlite
       ]
     ],
     "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
