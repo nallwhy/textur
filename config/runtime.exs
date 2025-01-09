@@ -111,3 +111,5 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+config :textur, obfuscator_salt: System.fetch_env!("OBFUSCATOR_SALT")
