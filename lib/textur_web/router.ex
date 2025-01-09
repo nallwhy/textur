@@ -18,6 +18,7 @@ defmodule TexturWeb.Router do
     pipe_through :browser
 
     get "/", TextController, :new
+    post "/create", TextController, :create
   end
 
   # Other scopes may use custom stacks.

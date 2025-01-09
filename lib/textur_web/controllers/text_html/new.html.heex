@@ -1,0 +1,15 @@
+<div>
+  <.form for={@form} action={~p"/create"}>
+    <div class="space-y-4">
+      <.input field={@form[:title]} type="text" placeholder="Title" />
+      <.input field={@form[:body]} type="textarea" placeholder="body" />
+      <.input
+        field={@form[:password]}
+        type="password"
+        placeholder="Password is required for editing and deleting"
+      />
+
+      <.button type="submit">Submit</.button>
+    </div>
+  </.form>
+</div>
