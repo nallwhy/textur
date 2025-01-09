@@ -15,7 +15,7 @@ defmodule Textur.Repo.Migrations.CreateText do
       add :password, :text, null: false
       add :body, :text, null: false
       add :title, :text
-      add :id, :uuid, null: false, primary_key: true
+      add :id, :bigserial, null: false, primary_key: true
     end
   end
 

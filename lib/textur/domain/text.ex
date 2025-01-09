@@ -4,7 +4,7 @@ defmodule Textur.Domain.Text do
     data_layer: AshSqlite.DataLayer
 
   attributes do
-    uuid_v7_primary_key :id
+    integer_primary_key :id
     attribute :title, :string, allow_nil?: true
     attribute :body, :string, allow_nil?: false
     attribute :password, :string, allow_nil?: false
