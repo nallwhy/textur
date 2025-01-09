@@ -1,4 +1,4 @@
-defmodule Textur.Repo.Migrations.CreateTexts do
+defmodule Textur.Repo.Migrations.CreateText do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 
@@ -10,8 +10,9 @@ defmodule Textur.Repo.Migrations.CreateTexts do
   def up do
     create table(:texts, primary_key: false) do
       add :created_at, :utc_datetime_usec, null: false
-      add :public, :boolean, null: false
-      add :password, :text
+      add :private_password, :text
+      add :private, :boolean, null: false
+      add :password, :text, null: false
       add :body, :text, null: false
       add :title, :text
       add :id, :uuid, null: false, primary_key: true

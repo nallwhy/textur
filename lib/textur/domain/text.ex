@@ -7,7 +7,7 @@ defmodule Textur.Domain.Text do
     uuid_v7_primary_key :id
     attribute :title, :string, allow_nil?: true
     attribute :body, :string, allow_nil?: false
-    attribute :password, :string, allow_nil?: true
+    attribute :password, :string, allow_nil?: false
     attribute :private, :boolean, default: false, allow_nil?: false
     attribute :private_password, :string, allow_nil?: true
 

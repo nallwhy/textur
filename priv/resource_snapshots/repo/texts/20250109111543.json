@@ -36,7 +36,7 @@
       "type": "text",
       "source": "password",
       "references": null,
-      "allow_nil?": true,
+      "allow_nil?": false,
       "generated?": false,
       "primary_key?": false
     },
@@ -72,12 +72,12 @@
     }
   ],
   "table": "texts",
-  "hash": "473FA653340CA20B1A49F626A6919D56D7B1612B7DD624936608AF5DCDF949E4",
+  "hash": "43593A2167AFEBAA7251F55C524A7FD8C488371420551F50F297E6629316C63F",
   "identities": [],
   "multitenancy": {
     "global": null,
-    "strategy": null,
-    "attribute": null
+    "attribute": null,
+    "strategy": null
   },
   "repo": "Elixir.Textur.Repo",
   "base_filter": null,
