@@ -60,7 +60,8 @@ defmodule Textur.MixProject do
       {:bandit, "~> 1.5"},
       {:ash, "~> 3.0"},
       {:ash_sqlite, "~> 0.2.1"},
-      {:ash_phoenix, "~> 2.1"}
+      {:ash_phoenix, "~> 2.1"},
+      {:hashids, "~> 2.1"}
     ]
   end
 
