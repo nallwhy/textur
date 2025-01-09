@@ -1,5 +1,7 @@
 defmodule Textur.Domain.Text do
-  use Ash.Resource, domain: Textur.Domain
+  use Ash.Resource,
+    domain: Textur.Domain,
+    data_layer: AshSqlite.DataLayer
 
   attributes do
     uuid_v7_primary_key :id
@@ -15,5 +17,10 @@ defmodule Textur.Domain.Text do
     create :create do
       accept [:title, :body, :password, :public]
     end
+  end
+
+  sqlite do
+    table "texts"
+    repo Textur.Repo
   end
 end
