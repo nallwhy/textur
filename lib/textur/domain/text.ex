@@ -3,6 +3,10 @@ defmodule Textur.Domain.Text do
     domain: Textur.Domain,
     data_layer: AshSqlite.DataLayer
 
+  use Textur.Use
+
+  @derive {Phoenix.Param, key: :obf_id}
+
   attributes do
     integer_primary_key :id
     attribute :title, :string, allow_nil?: true
@@ -29,9 +33,26 @@ defmodule Textur.Domain.Text do
     end
   end
 
+  calculations do
+    calculate :obf_id, :string do
+      load [:id]
+
+      calculation fn texts, _ctx ->
+        texts
+        |> Enum.map(fn text ->
+          U.Obfuscator.encode(text.id)
+        end)
+      end
+    end
+  end
+
   validations do
     validate attributes_present([:private_password]), where: attribute_equals(:private, true)
     validate attribute_equals(:private, true), where: attributes_present([:private_password])
+  end
+
+  preparations do
+    prepare build(load: [:obf_id])
   end
 
   sqlite do

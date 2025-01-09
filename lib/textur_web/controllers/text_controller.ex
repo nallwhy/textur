@@ -9,12 +9,12 @@ defmodule TexturWeb.TextController do
     |> render(:new, form: form)
   end
 
-  def show(conn, %{"text_id" => text_id}) do
-    case D.get_text_by_id(text_id) do
-      {:ok, text} ->
-        conn
-        |> render(:show, text: text)
-
+  def show(conn, %{"text_id" => text_obf_id}) do
+    with {:ok, text_id} <- U.Obfuscator.decode(text_obf_id),
+         {:ok, text} <- D.get_text_by_id(text_id) do
+      conn
+      |> render(:show, text: text)
+    else
       {:error, _} ->
         conn
         |> put_flash(:error, "No text")
@@ -27,6 +27,8 @@ defmodule TexturWeb.TextController do
 
     case form |> AshPhoenix.Form.submit(params: params) do
       {:ok, text} ->
+        text = text |> Ash.load!([:obf_id])
+
         conn
         |> put_flash(:info, "Text shared successfully!")
         |> redirect(to: ~p"/#{text}")
