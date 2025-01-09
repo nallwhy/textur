@@ -1,0 +1,37 @@
+# fly.toml app configuration file generated for textur on 2025-01-09T18:06:24+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'textur'
+primary_region = 'nrt'
+kill_signal = 'SIGTERM'
+
+[build]
+
+[env]
+  DATABASE_PATH = '/mnt/textur_db/textur_prod.db'
+  PHX_HOST = 'textur.fly.dev'
+  PORT = '8080'
+
+[[mounts]]
+  source = 'textur_db'
+  destination = '/mnt/textur_db'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+  [http_service.concurrency]
+    type = 'connections'
+    hard_limit = 1000
+    soft_limit = 1000
+
+[[vm]]
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1

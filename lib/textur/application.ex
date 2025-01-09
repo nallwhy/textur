@@ -7,12 +7,13 @@ defmodule Textur.Application do
 
   @impl true
   def start(_type, _args) do
+    Textur.Release.migrate()
+
     children = [
       TexturWeb.Telemetry,
       Textur.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:textur, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:textur, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:textur, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Textur.PubSub},
       # Start the Finch HTTP client for sending emails
