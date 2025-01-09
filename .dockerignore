@@ -46,3 +46,5 @@ erl_crash.dump
 
 # sqlite
 /db
+
+.envrc.private
