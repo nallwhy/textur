@@ -2,7 +2,7 @@ import Config
 
 # Configure your database
 config :textur, Textur.Repo,
-  database: Path.expand("../textur_dev.db", __DIR__),
+  database: Path.expand("../db/textur_dev.db", __DIR__),
   pool_size: 5,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true
@@ -16,7 +16,7 @@ config :textur, Textur.Repo,
 config :textur, TexturWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {127, 0, 0, 1}, port: 40606],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
