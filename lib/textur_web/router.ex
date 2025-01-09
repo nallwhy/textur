@@ -17,7 +17,7 @@ defmodule TexturWeb.Router do
   scope "/", TexturWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", TextController, :new
   end
 
   # Other scopes may use custom stacks.
