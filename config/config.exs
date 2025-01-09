@@ -61,6 +61,38 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :ash,
+  include_embedded_source_by_default?: false,
+  show_keysets_for_all_actions?: false,
+  default_belongs_to_type: :integer,
+  default_page_type: :keyset,
+  require_atomic_by_default?: false,
+  missed_notifications: :ignore
+
+config :spark,
+  formatter: [
+    remove_parens?: true,
+    "Ash.Resource": [
+      section_order: [
+        :attributes,
+        :relationships,
+        :state_machine,
+        :actions,
+        :changes,
+        :calculations,
+        :validations,
+        :aggregates,
+        :preparations,
+        :policies,
+        :identities,
+        :code_interface,
+        :resource,
+        :multitenancy
+      ]
+    ],
+    "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
